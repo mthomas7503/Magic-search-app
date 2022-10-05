@@ -1,0 +1,140 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+.about-section {
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+  background-image: url("./images/Enlightened+Tutor.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  color: #fff
+}
+
+div.searchlist {
+  background-image: url("./images/Frantic-Search-Ultimate-Masters-MtG-Art.jpeg");
+  background-repeat: repeat;
+  background-size: 100%;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 10px;
+  color: white;
+}
+
+div.search {
+  background-image: url("./images/Frantic-Search-Ultimate-Masters-MtG-Art.jpeg");
+  background-repeat: repeat;
+  background-size: 100%;
+  text-align: center;
+  height: 100vh;
+  width: 100%;
+  color: white;
+}
+
+div.decklistholder {
+    background-image: url("./images/Twinscroll-Shaman-Strixhaven-MtG-Art.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    padding-top: 10px;
+    color: white;  
+}
+
+div.decklist {
+  background-image: url("./images/Twinscroll-Shaman-Strixhaven-MtG-Art.jpeg");
+  background-repeat: repeat;
+  background-size: 100%;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+nav {
+  text-align: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.right-arrow {
+  color: limegreen;
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  font-size: 3rem;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  color: limegreen;
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  font-size: 3rem;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slider {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(3px + 2vmin);
+  color: silver;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./images/Satoru_Umezawa.webp");
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.topbar {
+  font-size: larger;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: silver;
+  width: 100%;
+}
+
+.navBar {
+  background-image: url("./images/HD-wallpaper-dark-ritual-magic-the-mystical-archive-gathering-card-instant.jpeg");
+}
