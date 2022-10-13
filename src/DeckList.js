@@ -5,18 +5,6 @@ import image from "./images/liliana.webp"
 function DeckList( {userChoices, setUserChoices} ) {
  
       
-function handleRemoveCard (e) {
-        fetch(`http://localhost:3000/userChoices/${e.target.id}`, {
-          method: 'DELETE',
-          headers:{
-            "content-type":"application/json"
-          }
-        });
-
-        fetch('http://localhost:3000/userChoices')
-            .then(res=>res.json())
-            .then(chosenCards => {setUserChoices(chosenCards)})
-    }
 
 
 return <div className={userChoices.length < 3  ? "decklistholder" : "decklist"}>

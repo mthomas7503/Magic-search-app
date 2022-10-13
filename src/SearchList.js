@@ -2,6 +2,16 @@ import React from "react";
 
 function SearchList({ results, onAdd }) {
     const goodResults = results.filter(result => result.imageUrl)
+    function handleAdd () {
+        const newCardObj = {
+            set: results.imageUr ,
+            multiverseid:
+            cardName:
+            cardSpecificId:
+            cardImg:
+
+        }
+    }
     return (<div className="searchlist">
         {goodResults.map((cardData, index)=> {
             
