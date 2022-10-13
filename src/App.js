@@ -5,9 +5,9 @@ import { Switch, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Home from "./Home.js";
 import About from "./About.js";
-import DeckList from "./DeckList.js"
 import NavBar from "./NavBar.js"
 import Search from "./Search.js"
+import Cardlist from "./Cardlist.js"
 import { card } from 'mtgsdk';
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
 
@@ -27,12 +27,11 @@ function handleInputChange(e) {
 setUserInput(e.target.value)
 }
 
-function handleAddToDecklist(e) {
+function handleAddCard(e) {
   fetch('http://localhost:3000/userChoices',{
     method:"POST",
     headers:{
-      "Content-Type":"application/json",
-      Accept:"application/json",
+      'Content-Type':'application/json',
     },
     body:JSON.stringify({cardName: e.target.alt,
     cardSpecificId: e.target.id,
@@ -40,9 +39,9 @@ function handleAddToDecklist(e) {
     set: e.target.title})
   })
   .then(resp => resp.json())
-  .then(()=> {fetch('http://localhost:3000/userChoices')
-.then(resp => resp.json()
-.then(selectedCards => setUserChoices(selectedCards)))})
+  .then(newCard=> {
+    setUserChoices([...userChoices, newCard])
+  })
 }
 
     console.log(userChoices)
@@ -55,6 +54,20 @@ function handleSubmit(e) {
     setUserInput("")
   }
 
+  function handleRemoveCard (cardObj) {
+    fetch(`http://localhost:3000/userChoices/${cardObj.id}`, {
+      method: 'DELETE',
+      headers:{
+        "content-type":"application/json"
+      }
+    })
+    .then(resp => resp.json())
+    .then(() => {
+      const filteredObj = userChoices.filter(card => card.id !== cardObj.id)
+      setUserChoices(filteredObj)
+    } )
+}
+
   return (
     <div>
       <NavBar />
@@ -63,10 +76,10 @@ function handleSubmit(e) {
           <About />
         </Route>
         <Route path="/search">
-          <Search handleAddToDecklist={handleAddToDecklist} results={results} handleSubmit={handleSubmit} userInput={userInput} handleChange={handleInputChange} setUserInput={setUserInput}/>
+          <Search handleDecklist={handleAddCard} results={results} handleSubmit={handleSubmit} userInput={userInput} handleChange={handleInputChange} setUserInput={setUserInput}/>
         </Route>
         <Route path="/decklist">
-          <DeckList userChoices={userChoices} setUserChoices={setUserChoices} /*onRemove={handleRemoveCard}*/ />
+          <Cardlist list={userChoices} handleDecklist={handleRemoveCard} />
         </Route>
         <Route path="/">
           <Home />
