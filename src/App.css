@@ -49,7 +49,7 @@ div.search {
   color: white;
 }
 
-div.decklistholder {
+div.cardlistholder {
     background-image: url("./images/Twinscroll-Shaman-Strixhaven-MtG-Art.jpeg");
     background-repeat: no-repeat;
     background-size: 100%;
@@ -60,7 +60,7 @@ div.decklistholder {
     color: white;  
 }
 
-div.decklist {
+div.cardlist {
   background-image: url("./images/Twinscroll-Shaman-Strixhaven-MtG-Art.jpeg");
   background-repeat: repeat;
   background-size: 100%;

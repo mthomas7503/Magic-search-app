@@ -4,10 +4,11 @@ import { FaList } from "react-icons/fa"
 
 
 function Cardlist({ list, handleDecklist }) {
+    
     return(
-        <div className = "cardlist">
-            {list.map(cardData => {
-                return(<Card cardObj={cardData} handleDecklist={handleDecklist}/>)}
+        <div className = {list.length < 3 ? "cardlistholder" : "cardlist"}>
+            {list.map((cardData, index) => {
+                return(<Card key={index} cardObj={cardData} handleDecklist={handleDecklist}/>)}
             )}
         </div>
     )

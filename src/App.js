@@ -28,23 +28,24 @@ setUserInput(e.target.value)
 }
 
 function handleAddCard(e) {
+const postObj = {
+  name: e.target.alt,
+  cardSpecificId: e.target.id,
+  imageUrl: e.target.src,
+  set: e.target.setName
+}
+
   fetch('http://localhost:3000/userChoices',{
     method:"POST",
     headers:{
       'Content-Type':'application/json',
     },
-    body:JSON.stringify({cardName: e.target.alt,
-    cardSpecificId: e.target.id,
-    cardImg: e.target.src,
-    set: e.target.title})
-  })
+    body:JSON.stringify(postObj)
   .then(resp => resp.json())
   .then(newCard=> {
     setUserChoices([...userChoices, newCard])
   })
-}
-
-    console.log(userChoices)
+})}
 
 function handleSubmit(e) {
     e.preventDefault()
@@ -55,6 +56,7 @@ function handleSubmit(e) {
   }
 
   function handleRemoveCard (cardObj) {
+    console.log(cardObj.id)
     fetch(`http://localhost:3000/userChoices/${cardObj.id}`, {
       method: 'DELETE',
       headers:{
@@ -62,7 +64,7 @@ function handleSubmit(e) {
       }
     })
     .then(resp => resp.json())
-    .then(() => {
+    .then((card) => {
       const filteredObj = userChoices.filter(card => card.id !== cardObj.id)
       setUserChoices(filteredObj)
     } )
