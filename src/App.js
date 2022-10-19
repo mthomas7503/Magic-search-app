@@ -32,40 +32,40 @@ const postObj = {
   name: e.target.alt,
   cardSpecificId: e.target.id,
   imageUrl: e.target.src,
-  set: e.target.setName
+  setName: e.target.title
 }
 
-  fetch('http://localhost:3000/userChoices',{
+  fetch('http://localhost:3000/userChoices', {
     method:"POST",
     headers:{
       'Content-Type':'application/json',
     },
-    body:JSON.stringify(postObj)
+    body:JSON.stringify(postObj)})
   .then(resp => resp.json())
-  .then(newCard=> {
-    setUserChoices([...userChoices, newCard])
-  })
-})}
+  .then(newCard => setUserChoices([...userChoices, newCard]))
+}
 
 function handleSubmit(e) {
     e.preventDefault()
     fetch(`https://api.magicthegathering.io/v1/cards?name=${userInput}`)
     .then(prom=>prom.json())
-    .then(data=>  setResults(data.cards))
+    .then(data=> {
+      const goodData = data.cards.filter(card => card.imageUrl)
+      setResults(goodData)})
     setUserInput("")
   }
 
-  function handleRemoveCard (cardObj) {
-    console.log(cardObj.id)
-    fetch(`http://localhost:3000/userChoices/${cardObj.id}`, {
+  function handleRemoveCard (e) {
+    fetch(`http://localhost:3000/userChoices/${e.target.id}`, {
       method: 'DELETE',
       headers:{
         "content-type":"application/json"
       }
     })
     .then(resp => resp.json())
-    .then((card) => {
-      const filteredObj = userChoices.filter(card => card.id !== cardObj.id)
+    .then(() => {
+      const filteredObj = userChoices.filter(card => card.id !== e.target.id);
+      
       setUserChoices(filteredObj)
     } )
 }
