@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "./Card"
 import Cardlist from "./Cardlist.js"
 
 function Search ({ userInput, handleChange, results, handleDecklist, handleSubmit}) {
@@ -8,7 +9,9 @@ function Search ({ userInput, handleChange, results, handleDecklist, handleSubmi
             <input type="text" value={userInput} onChange={handleChange}/>
             <button>Search</button>
         </form>
-        <Cardlist handleDecklist={handleDecklist} list={results} />
+        {results.map((cardData, index) => {
+                return(<Card key={index} cardObj={cardData} handleDecklist={handleDecklist}/>)}
+            )}
     </div>);
 }
 export default Search;
