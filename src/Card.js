@@ -1,7 +1,6 @@
 import React from "react"
 
 function Card ({ cardObj, handleDecklist }) {
-    console.log(cardObj)
     return (
     <li>
         <img title={cardObj.setName} id={cardObj.id} onClick={handleDecklist} alt={cardObj.name} src={cardObj.imageUrl} />

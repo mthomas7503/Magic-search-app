@@ -64,9 +64,9 @@ function handleSubmit(e) {
     })
     .then(resp => resp.json())
     .then(() => {
-      const filteredObj = userChoices.filter(card => card.id !== e.target.id)
+      const filteredObj = userChoices.filter(card => card.id != e.target.id)
       console.log(filteredObj)
-      setUserChoices([filteredObj])
+      setUserChoices(filteredObj)
     } )
 }
 
