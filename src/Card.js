@@ -3,10 +3,9 @@ import React from "react"
 function Card ({ cardObj, handleDecklist }) {
     return (
     <li>
-        <img title={cardObj.setName} id={cardObj.id} onClick={handleDecklist} alt={cardObj.name} src={cardObj.imageUrl} />
+        <img id={cardObj.id} onClick={handleDecklist} title={cardObj.setName} alt={cardObj.name} src={cardObj.imageUrl} />
         <p>Set: {cardObj.setName}</p>
-    </li>
-    )
+    </li>)
 }
 
 export default Card

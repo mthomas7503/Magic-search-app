@@ -42,7 +42,7 @@ const postObj = {
     },
     body:JSON.stringify(postObj)})
   .then(resp => resp.json())
-  .then(newCard => setUserChoices([...userChoices, newCard]))
+  .then(newCard => {setUserChoices([...userChoices, newCard])})
 }
 
 function handleSubmit(e) {
@@ -65,7 +65,6 @@ function handleSubmit(e) {
     .then(resp => resp.json())
     .then(() => {
       const filteredObj = userChoices.filter(card => card.id != e.target.id)
-      console.log(filteredObj)
       setUserChoices(filteredObj)
     } )
 }
