@@ -52,7 +52,7 @@ function handleSubmit(e) {
     .then(data=> {
       const goodData = data.cards.filter(card => card.imageUrl)
       setResults(goodData)})
-    .catch(alert("Card Not Found"))
+    .catch(() => alert("Card Not Found"))
     setUserInput("")
   }
 
